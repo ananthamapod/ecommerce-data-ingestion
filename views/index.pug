@@ -2,4 +2,10 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  form(method='post', enctype='multipart/form-data')
+    div
+      label(for='file') Choose file to upload
+      input#file(type='file', name='file', multiple='')
+      #dragHere Drag & Drop Here
+    div
+      button Submit
