@@ -2,10 +2,16 @@ extends layout
 
 block content
   h1= title
-  form(method='post', enctype='multipart/form-data')
-    div
+  div
+    div#fileChooserDiv
       label(for='file') Choose file to upload
-      input#file(type='file', name='file', multiple='')
-      #dragHere Drag & Drop Here
-    div
-      button Submit
+      input#fileChooser(type='file', name='file', multiple='')
+      div
+        button#submit Upload
+      div(data-nothingtoupload='') No file was selected, please try again
+      #dropzone Drag & Drop Here
+      #fileInfo
+      | Status:
+      .alert-box.secondary
+
+  script(src='javascripts/app.js')
