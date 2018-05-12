@@ -6,8 +6,9 @@
   "main": "www",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "NODE_ENV=development nodemon ./bin/www",
+    "start": "node ./bin/www && node ./bin/dbLoader",
+    "webdev": "NODE_ENV=development nodemon ./bin/www",
+    "loaderdev": "NODE_ENV=development nodemon ./bin/dbLoader",
     "fedev": "nodemon --watch webpack.config.js --watch webpack --exec \"node_modules/.bin/webpack-cli -d --watch --env development\"",
     "feprod": "node_modules/.bin/webpack-cli -p --env production"
   },
@@ -28,6 +29,7 @@
     "connect-multiparty": "^2.1.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
+    "event-stream": "^3.3.4",
     "express": "~4.14.0",
     "jquery": "^3.3.1",
     "morgan": "~1.7.0",
@@ -35,6 +37,9 @@
     "node-sass-middleware": "0.9.8",
     "nprogress": "^0.2.0",
     "pug": "~2.0.0-beta6",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2",
+    "request-stream": "^1.2.2",
     "resumablejs": "^1.1.0",
     "sequelize": "^4.37.7",
     "serve-favicon": "~2.3.0"

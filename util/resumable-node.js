@@ -1,7 +1,10 @@
 var fs = require('fs'),
   path = require('path'),
   util = require('util'),
-  Stream = require('stream').Stream
+  Stream = require('stream').Stream,
+  debug = require('debug')('ecommerce-data-ingestion:server'),
+  request = require('request-stream'),
+  loadingService = require('../config/config.json')['loadingService']
 var result
 
 
@@ -16,6 +19,26 @@ module.exports = resumable = function(temporaryFolder){
     fs.mkdirSync($.temporaryFolder)
   }catch(e){}
 
+  var writeToLoadingService = function(identifier) {
+    var service_uri = `${loadingService['host']}:${loadingService['port']}`
+    console.log(service_uri)
+    var req = request(service_uri,
+      {
+        method: 'POST'
+      }, (err, res) => {
+        if (err) {
+          console.log(err)
+          debug('Warning! Error submitting file to data loader')
+          debug(err)
+        } else {
+          console.log("success")
+          debug('File submitted successfully to data loader')
+        }
+      }
+    )
+
+    $.write(identifier, req)
+  }
 
   var cleanIdentifier = function(identifier){
     return identifier.replace(/^0-9A-Za-z_-/img, '')
@@ -119,11 +142,13 @@ module.exports = resumable = function(temporaryFolder){
         var currentTestChunk = 1
         var numberOfChunks = Math.max(Math.floor(totalSize/(chunkSize*1.0)), 1)
         var testChunkExists = function(){
-              fs.exists(getChunkFilename(currentTestChunk, identifier), function(exists){
+              var chunkFileName = getChunkFilename(currentTestChunk, identifier)
+              fs.exists(chunkFileName, function(exists){
                 if(exists){
                   currentTestChunk++
                   if(currentTestChunk>numberOfChunks) {
                     callback('done', filename, original_filename, identifier)
+                    writeToLoadingService(identifier)
                   } else {
                     // Recursion
                     testChunkExists()
@@ -141,7 +166,7 @@ module.exports = resumable = function(temporaryFolder){
   }
 
 
-  // Pipe chunks directly in to an existsing WritableStream
+  // Pipe chunks directly in to an existing WritableStream
   //   r.write(identifier, response)
   //   r.write(identifier, response, {end:false})
   //

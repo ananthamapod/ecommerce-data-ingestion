@@ -3,7 +3,8 @@ import NProgress from 'nprogress'
 import $ from 'jquery'
 
 var r = new Resumable({
-  target: '/api/upload'
+  target: '/api/upload',
+  chunkSize: 1024
 })
 var fileInfo = $('#fileInfo'),
   dropzone = $('#dropzone'),
