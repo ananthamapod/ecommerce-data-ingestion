@@ -1,0 +1,29 @@
+{
+  "loadingService": {
+    "host": "http://127.0.0.1",
+    "port": 3001
+  },
+  "database": {
+    "development": {
+      "username": "root",
+      "password": "admin",
+      "database": "atlantic_ecommerce",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "test": {
+      "username": "root",
+      "password": "admin",
+      "database": "atlantic_ecommerce",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "production": {
+      "username": "root",
+      "password": "admin",
+      "database": "atlantic_ecommerce",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    }
+  }
+}
