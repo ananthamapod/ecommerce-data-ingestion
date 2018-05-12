@@ -8,7 +8,9 @@
   "scripts": {
     "start": "node ./bin/www && node ./bin/dbLoader",
     "webdev": "NODE_ENV=development nodemon ./bin/www",
+    "webprod": "node ./bin/www",
     "loaderdev": "NODE_ENV=development nodemon ./bin/dbLoader",
+    "loaderprod": "node ./bin/dbLoader",
     "fedev": "nodemon --watch webpack.config.js --watch webpack --exec \"node_modules/.bin/webpack-cli -d --watch --env development\"",
     "feprod": "node_modules/.bin/webpack-cli -p --env production"
   },

@@ -4,7 +4,7 @@ import $ from 'jquery'
 
 var r = new Resumable({
   target: '/api/upload',
-  chunkSize: 1024
+  chunkSize: 1 * 1024 * 1024
 })
 var fileInfo = $('#fileInfo'),
   dropzone = $('#dropzone'),
