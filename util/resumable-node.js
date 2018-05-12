@@ -19,6 +19,7 @@ module.exports = resumable = function(temporaryFolder){
     fs.mkdirSync($.temporaryFolder)
   }catch(e){}
 
+  // Reads file identified as a stream from filesystem to the loader service
   var writeToLoadingService = function(identifier) {
     var service_uri = `${loadingService['host']}:${loadingService['port']}`
     console.log(service_uri)
