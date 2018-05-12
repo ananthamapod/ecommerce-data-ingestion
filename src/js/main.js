@@ -10,7 +10,7 @@ var fileInfo = $('#fileInfo'),
   dropzone = $('#dropzone'),
   fileSubmitButton = $('#submit'),
   fileChooser = $('#fileChooser'),
-  nothingToUploadMessage = $('[data-nothingToUploadMessage]')
+  nothingToUploadMessage = $('#nothingToUploadMessage')
 
 
 // if resumable is not supported aka IE
@@ -21,15 +21,18 @@ r.assignDrop(dropzone)
 
 r.on('fileAdded', function (file, event) {
   var template =
+      '<div class="file">' +
       '<div data-uniqueid="' + file.uniqueIdentifier + '">' +
       '<div class="fileName">' + file.fileName + ' (' + file.file.type + ')' + '</div>' +
       '<div class="right deleteFile">X</div>' +
       '<div class="progress">' +
       '<span class="meter" style="width:0%"></span>' +
       '</div>' +
+      '</div>' +
       '</div>'
 
   fileInfo.append(template)
+  nothingToUploadMessage.hide()
 })
 
 fileSubmitButton.on('click', function () {
@@ -56,10 +59,13 @@ $(document).on('click', '.deleteFile', function () {
 
 r.on('fileProgress', function (file) {
   var progress = Math.floor(file.progress() * 100)
-  NProgress.inc()
+  $('[data-uniqueId=' + file.uniqueIdentifier + ']').find('.meter').css('width', progress + '%')
+  $('[data-uniqueId=' + file.uniqueIdentifier + ']').find('.meter').html('&nbsp;' + progress + '%')
+  NProgress.inc(progress/100)
 })
 
 r.on('fileSuccess', function (file, message) {
+  $('[data-uniqueId=' + file.uniqueIdentifier + ']').find('.progress').addClass('success');
   NProgress.done()
 })
 

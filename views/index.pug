@@ -3,15 +3,15 @@ extends layout
 block content
   h1= title
   div
+    label(for='file') Choose file to upload
     div#fileChooserDiv
-      label(for='file') Choose file to upload
       input#fileChooser(type='file', name='file', multiple='')
+      #dropzone Drag & Drop Here
       div
         button#submit Upload
-      div(data-nothingtoupload='') No file was selected, please try again
-      #dropzone Drag & Drop Here
+      div#nothingToUploadMessage No file was selected, please try again
       #fileInfo
       | Status:
-      .alert-box.secondary
+      #uploadStatus
 
   script(src='javascripts/app.js')

@@ -1,8 +1,30 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
-
-a {
-  color: #00B7FF; }
+  font: 14px "Lucida Grande", "Helvetica", "Arial", "sans-serif"; }
+  body a {
+    color: #00B7FF; }
+  body label {
+    display: block;
+    background: #bbb;
+    font-size: 1.4em; }
+  body #fileChooserDiv > * {
+    margin: 0.7em; }
+  body #fileChooserDiv #dropzone {
+    margin: 2em;
+    padding: 2em;
+    max-height: 5em;
+    max-width: 20em;
+    text-align: center;
+    background: lightblue;
+    border-radius: 0.4em; }
+  body #fileChooserDiv .hide {
+    visibility: hidden; }
+  body #fileChooserDiv .file {
+    background: #888; }
+  body #fileChooserDiv .right {
+    float: right; }
+  body #fileChooserDiv .delete-file {
+    border: 1px solid #999;
+    background: #eee; }
 
 /*# sourceMappingURL=style.css.map */

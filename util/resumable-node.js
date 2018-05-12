@@ -34,6 +34,7 @@ module.exports = resumable = function(temporaryFolder){
         } else {
           console.log("success")
           debug('File submitted successfully to data loader')
+          $.clean(identifier)
         }
       }
     )
