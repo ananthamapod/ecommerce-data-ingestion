@@ -12,7 +12,7 @@ After cloning the repository
 
 1. Ensure Node.js and MySQL (or other Sequelize compatible SQL variant) are installed on the system
 
-2. Make sure to update the config.json file as necessary with the intended database configuration info
+2. Make sure to update the config.json file as necessary with the intended database configuration info (note: the database name given should be already created and the database credentials given should have write privileges on this database)
 
 3. Install the node modules necessary by running `npm i` from within the root directory of the project
 
@@ -38,7 +38,24 @@ After cloning the repository
 
 * Node.js
 * MySQL/variant
-* A ton of node modules (`npm install` all the things)
+* A ton of node modules (`npm install` all the things):
+  * App
+    * jQuery - DOM manipulation and Ajax library
+    * nprogress - progressbar module
+    * resumable - module that uses the HTML5 File API to reliably handle multipart/chunk file uploads
+    * request-stream - wrapper around the low-level http and https modules that exposes the request and response objects as readable/writeable streams
+    * event-stream - more full featured wrapper around native Node.js streams
+    * sequelize - SQL flavor Node.js ORM
+    * cookie-parser, body-parser, connect-multiparty - express middlewares for better handling of cookies, general post data, multipart form input respectively
+    * morgan - express middleware for request logging
+    * debug - great for debug level logging during development
+    * pug, node-sass-middleware - pug templating for webpages and sass/scss support for styling
+  * Development/Bundling
+    * webpack & related (loaders and additional tools) - module bundling
+    * babel & related (polyfills) - crosspiling for advanced ES6/7 features
+    * stylelint, eslint. & related - linting
+  * Testing
+    * mocha & chai - endpoint testing
 
 ## Authors
 
