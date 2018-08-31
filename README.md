@@ -4,7 +4,7 @@
 
 ## Basic information
 
-The project is build entirely using JavaScript, Node.js and Express for the web server, Sequelize as ORM, Node.js for backend services, client-side bundling with Webpack, and jQuery on the client-side. The project is split up into two parts, the file upload handling and the database loading. These are both written as separate Node servers so that they could possibly be completely decoupled and hosted on separate servers. While currently hosted locally, database information is also configured such that it could be changed to point to an external source instead.
+The project is build entirely using JavaScript: Express for the web server, Sequelize as ORM, core Node.js for backend services, client-side bundling with Webpack, and jQuery on the client-side. The project is split up into two parts, the file upload handling and the database loading. These are both written as separate Node servers so that they could possibly be completely decoupled and hosted on separate servers. While currently hosted locally, database information is also configured such that it could be changed to point to an external source instead.
 
 ## Setup Instructions
 
